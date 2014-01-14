@@ -1,0 +1,30 @@
+apply plugin: 'idea'
+apply plugin: 'java'
+
+group = 'com.thoughtworks.ns.collection'
+version = '0.0.1'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'com.google.guava:guava:15.0'
+
+    testCompile (
+            'junit:junit:4.11',
+            'org.hamcrest:hamcrest-all:1.3'
+    )
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.8'
+}
+
+task initProject << {
+    sourceSets.all { sourceSet ->
+        sourceSet.allJava.srcDirs.each {
+            it.exists() || it.mkdirs()
+        }
+    }
+}
