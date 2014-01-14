@@ -2,9 +2,6 @@ package com.thoughtworks.ns;
 
 import java.util.List;
 
-/**
- * Created by ry on 14-1-4.
- */
 public class Display {
 
     public String displayInformation(Student student) {
