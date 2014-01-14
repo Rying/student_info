@@ -14,7 +14,7 @@ public class StudentsTest {
     private final Students students = new Students();
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         student_array[0] = new Student("A", 100);
         student_array[1] = new Student("B", 80);
         student_array[2] = new Student("C", 59);
@@ -26,7 +26,7 @@ public class StudentsTest {
 
     @Test
     public void should_get_all_students() {
-        List<Student> another_students = new ArrayList();
+        List<Student> another_students = new ArrayList<>();
         another_students.add(student_array[0]);
         another_students.add(student_array[1]);
         another_students.add(student_array[2]);
@@ -36,7 +36,7 @@ public class StudentsTest {
 
     @Test
     public void should_get_students_score_more_than_60() {
-        List<Student> another_students = new ArrayList();
+        List<Student> another_students = new ArrayList<>();
         another_students.add(student_array[0]);
         another_students.add(student_array[1]);
 

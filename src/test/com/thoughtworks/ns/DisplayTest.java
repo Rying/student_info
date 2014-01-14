@@ -11,10 +11,10 @@ import static org.junit.Assert.assertThat;
 
 public class DisplayTest {
     Display display = new Display();
-    private final List<Student> students = new ArrayList();
+    private final List<Student> students = new ArrayList<>();
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         students.add(new Student("A", 100));
         students.add(new Student("B", 80));
         students.add(new Student("C", 59));

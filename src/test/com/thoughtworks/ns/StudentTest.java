@@ -5,9 +5,6 @@ import org.junit.Test;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
-/**
- * Created by ry on 14-1-14.
- */
 public class StudentTest {
     @Test
     public void should_get_100_Roma_score_is_C() {
