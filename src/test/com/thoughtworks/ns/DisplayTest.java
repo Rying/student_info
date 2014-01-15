@@ -29,7 +29,7 @@ public class DisplayTest {
     public void should_output_different_students_information_in_different_line() {
         assertThat(display.displayInformation(students), is("A,100\n" +
                 "B,80\n" +
-                "C,59\n"));
+                "C,59"));
     }
 
     @Test

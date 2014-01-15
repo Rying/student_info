@@ -14,14 +14,14 @@ public class Display {
     }
 
     public String displayInformation(List<Student> students) {
-        return Joiner.on("").join(transform(students, getEachStudentInformation()));
+        return Joiner.on("\n").join(transform(students, getEachStudentInformation()));
     }
 
     private Function<Student, String> getEachStudentInformation() {
         return new Function<Student, String>() {
             @Override
             public String apply(Student student) {
-                return displayInformation(student) + "\n";
+                return displayInformation(student);
             }
         };
     }
