@@ -1,7 +1,13 @@
 package com.thoughtworks.ns;
 
+import com.google.common.base.Predicate;
+
+
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.google.common.collect.Collections2.filter;
+
 
 public class Students {
     private List<Student> students;
@@ -20,12 +26,14 @@ public class Students {
     }
 
     public List<Student> getPassedStudents() {
-        List<Student> passedStudents = new ArrayList<>();
-        for (Student student : students) {
-            if (student.getScore() > 60) {
-                passedStudents.add(student);
+        return new ArrayList<>(filter(students, getStudentsScoreMoreThan60()));
+    }
+
+    private Predicate<Student> getStudentsScoreMoreThan60() {
+        return new Predicate<Student>() {
+            public boolean apply(Student student) {
+                return student.getScore() >= 60;
             }
-        }
-        return passedStudents;
+        };
     }
 }

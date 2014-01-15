@@ -1,6 +1,11 @@
 package com.thoughtworks.ns;
 
+import com.google.common.base.Function;
+import com.google.common.base.Joiner;
+
 import java.util.List;
+
+import static com.google.common.collect.Lists.transform;
 
 public class Display {
 
@@ -9,12 +14,16 @@ public class Display {
     }
 
     public String displayInformation(List<Student> students) {
-        String str = "";
+        return Joiner.on("").join(transform(students, getEachStudentInformation()));
+    }
 
-        for (Student student : students) {
-            str += displayInformation(student) + "\n";
-        }
-        return str;
+    private Function<Student, String> getEachStudentInformation() {
+        return new Function<Student, String>() {
+            @Override
+            public String apply(Student student) {
+                return displayInformation(student) + "\n";
+            }
+        };
     }
 
     public String jsDisplay(Student student) {
