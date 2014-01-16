@@ -9,47 +9,96 @@ import static com.google.common.collect.Lists.transform;
 
 public class Display {
 
-    public String displayInformation(Student student) {
+    public String displayInArabicScore(Student student) {
         return student.getName() + "," + student.getScore();
     }
 
-    public String displayInformation(List<Student> students) {
-        return Joiner.on("\n").join(transform(students, getEachStudentInformation()));
+    public String displayInArabicScore(List<Student> students) {
+        return Joiner.on("\n").join(getStudentsInformationInArabic(students));
     }
 
-    private Function<Student, String> getEachStudentInformation() {
+    private List<String> getStudentsInformationInArabic(List<Student> students) {
+        return transform(students, getEachStudentInformationInArabic());
+    }
+
+    private Function<Student, String> getEachStudentInformationInArabic() {
         return new Function<Student, String>() {
             @Override
             public String apply(Student student) {
-                return displayInformation(student);
+                return displayInArabicScore(student);
             }
         };
     }
 
-    public String jsDisplay(Student student) {
-        return "{" + student.getName() + ":" + student.getScore() + "}";
+    public String jsDisplayInArabicScore(Student student) {
+        return "{" + getOneStudentInformationInArabicJson(student) + "}";
     }
 
-    public String jsDisplay(List<Student> students) {
-        String output = "{" + students.get(0).getName() + ":" + students.get(0).getScore();
-
-        for (int i = 1; i < students.size(); i++) {
-            output += "," + students.get(i).getName() + ":" + students.get(i).getScore();
-        }
-
-        return output + "}";
+    private String getOneStudentInformationInArabicJson(Student student) {
+        return student.getName() + ":" + student.getScore();
     }
 
-    public String displayInformationInRoma(Student student) {
+    public String jsDisplayInArabicScore(List<Student> students) {
+        return "{" + Joiner.on(",").join(getStudentsInformationArabicJson(students)) + "}";
+    }
+
+    private List<String> getStudentsInformationArabicJson(List<Student> students) {
+        return transform(students, getEachStudentInformationArabicJson());
+    }
+
+    private Function<Student, String> getEachStudentInformationArabicJson() {
+        return new Function<Student, String>() {
+            @Override
+            public String apply(Student student) {
+                return getOneStudentInformationInArabicJson(student);
+            }
+        };
+    }
+
+    public String displayInRomaScore(Student student) {
         return student.getName() + "," + student.getRomaScore();
     }
 
-    public String displayInformationInRoma(List<Student> students) {
-        String str = "";
+    public String displayInRomaScore(List<Student> students) {
+        return Joiner.on("\n").join(getStudentsInformationInRoma(students));
+    }
 
-        for (Student student : students) {
-            str += displayInformationInRoma(student) + "\n";
-        }
-        return str;
+    private List<String> getStudentsInformationInRoma(List<Student> students) {
+        return transform(students, getEachStudentInformationInRoma());
+    }
+
+    private Function<Student, String> getEachStudentInformationInRoma() {
+        return new Function<Student, String>() {
+            @Override
+            public String apply(Student student) {
+                return displayInRomaScore(student);
+            }
+        };
+    }
+
+    public String jsDisplayInRomaScore(Student student) {
+        return "{" + getOneStudentInformationInRomaJson(student) + "}";
+    }
+
+    private String getOneStudentInformationInRomaJson(Student student) {
+        return student.getName() + ":" + student.getRomaScore();
+    }
+
+    public String jsDisplayInRomaScore(List<Student> students) {
+        return "{" + Joiner.on(",").join(getStudentsInformationInRomaJson(students)) + "}";
+    }
+
+    private List<String> getStudentsInformationInRomaJson(List<Student> students) {
+        return transform(students, getEachStudentInformationInRomaJson());
+    }
+
+    private Function<Student, String> getEachStudentInformationInRomaJson() {
+        return new Function<Student, String>() {
+            @Override
+            public String apply(Student student) {
+                return getOneStudentInformationInRomaJson(student);
+            }
+        };
     }
 }
+
