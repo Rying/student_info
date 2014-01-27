@@ -138,15 +138,31 @@ public class Display {
 
 
     public Display text() {
-        for (Student student : students) {
-            representation += student.getName() + "," + student.getScore() + "\n";
-        }
-        representation = representation.substring(0, representation.length() - 1);
+        joinWith(",", "\n");
+        removeLastCharacter();
         return this;
     }
 
     public String show() {
         return this.representation;
+    }
+
+    public Display json() {
+        representation += "{";
+        joinWith(":", ",");
+        removeLastCharacter();
+        representation += "}";
+        return this;
+    }
+
+    private void removeLastCharacter() {
+        representation = representation.substring(0, representation.length() - 1);
+    }
+
+    private void joinWith(String middle, String last) {
+        for (Student student : students) {
+            representation += student.getName() + middle + student.getScore() + last;
+        }
     }
 }
 

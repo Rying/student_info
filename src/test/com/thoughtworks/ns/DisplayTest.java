@@ -27,25 +27,18 @@ public class DisplayTest {
     }
 
     @Test
-    public void should_output_different_students_information_in_different_line() {
-        assertThat(display.displayInArabicScore(students), is("A,100\n" +
-                "B,80\n" +
-                "C,59"));
-    }
-
-    @Test
     public void should_output_different_students_information_in_different_line_extra() {
         assertThat(wrap(students).text().show(), is("A,100\nB,80\nC,59"));
     }
 
     @Test
     public void should_output_A100_in_json_right() {
-        assertThat(display.jsDisplayInArabicScore(new Student("A", 100)), is("{A:100}"));
+        assertThat(wrap(new Student("A", 100)).json().show(), is("{A:100}"));
     }
 
     @Test
     public void should_output_all_students_in_json_right() {
-        assertThat(display.jsDisplayInArabicScore(students), is("{A:100,B:80,C:59}"));
+        assertThat(wrap(students).json().show(), is("{A:100,B:80,C:59}"));
     }
 
     @Test
