@@ -44,52 +44,6 @@ public class Display {
         return RomaScore;
     }
 
-    public String displayInArabicScore(Student student) {
-        return student.getName() + "," + student.getScore();
-    }
-
-    public String displayInArabicScore(List<Student> students) {
-        return Joiner.on("\n").join(getStudentsInformationInArabic(students));
-    }
-
-    private List<String> getStudentsInformationInArabic(List<Student> students) {
-        return transform(students, getEachStudentInformationInArabic());
-    }
-
-    private Function<Student, String> getEachStudentInformationInArabic() {
-        return new Function<Student, String>() {
-            @Override
-            public String apply(Student student) {
-                return displayInArabicScore(student);
-            }
-        };
-    }
-
-    public String jsDisplayInArabicScore(Student student) {
-        return "{" + getOneStudentInformationInArabicJson(student) + "}";
-    }
-
-    private String getOneStudentInformationInArabicJson(Student student) {
-        return student.getName() + ":" + student.getScore();
-    }
-
-    public String jsDisplayInArabicScore(List<Student> students) {
-        return "{" + Joiner.on(",").join(getStudentsInformationArabicJson(students)) + "}";
-    }
-
-    private List<String> getStudentsInformationArabicJson(List<Student> students) {
-        return transform(students, getEachStudentInformationArabicJson());
-    }
-
-    private Function<Student, String> getEachStudentInformationArabicJson() {
-        return new Function<Student, String>() {
-            @Override
-            public String apply(Student student) {
-                return getOneStudentInformationInArabicJson(student);
-            }
-        };
-    }
-
     public String displayInRomaScore(Student student) {
         return student.getName() + "," + getRomaScore(student.getScore());
     }
