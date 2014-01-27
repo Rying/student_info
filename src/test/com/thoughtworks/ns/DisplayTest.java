@@ -6,6 +6,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.thoughtworks.ns.Display.wrap;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
@@ -21,8 +22,8 @@ public class DisplayTest {
     }
 
     @Test
-    public void should_output_is_A100() {
-        assertThat(display.displayInArabicScore(new Student("A", 100)), is("A,100"));
+    public void should_output_is_A100_extra() {
+        assertThat(wrap(new Student("A", 100)).text().show(), is("A,100"));
     }
 
     @Test

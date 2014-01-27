@@ -9,6 +9,21 @@ import static com.google.common.collect.Lists.transform;
 
 public class Display {
 
+    private final Student student;
+    private String representation;
+
+    public Display(Student student) {
+        this.student = student;
+    }
+
+    public Display() {
+        this.student = null;
+    }
+
+    public static Display wrap(Student student){
+        return new Display(student);
+    }
+
     public static String getRomaScore(int score1) {
         String[][] RomaNumbers = {{"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"},
                 {"", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XCC"},
@@ -114,6 +129,16 @@ public class Display {
                 return getOneStudentInformationInRomaJson(student);
             }
         };
+    }
+
+
+    public Display text() {
+        representation = student.getName() + "," + student.getScore();
+        return this;
+    }
+
+    public String show() {
+        return this.representation;
     }
 }
 
