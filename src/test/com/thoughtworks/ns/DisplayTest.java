@@ -22,7 +22,7 @@ public class DisplayTest {
     }
 
     @Test
-    public void should_output_is_A100_extra() {
+    public void should_output_is_A100() {
         assertThat(wrap(new Student("A", 100)).text().show(), is("A,100"));
     }
 
@@ -31,6 +31,11 @@ public class DisplayTest {
         assertThat(display.displayInArabicScore(students), is("A,100\n" +
                 "B,80\n" +
                 "C,59"));
+    }
+
+    @Test
+    public void should_output_different_students_information_in_different_line_extra() {
+        assertThat(wrap(students).text().show(), is("A,100\nB,80\nC,59"));
     }
 
     @Test

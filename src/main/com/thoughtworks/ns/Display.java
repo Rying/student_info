@@ -2,6 +2,7 @@ package com.thoughtworks.ns;
 
 import com.google.common.base.Function;
 import com.google.common.base.Joiner;
+import com.google.common.collect.Lists;
 
 import java.util.List;
 
@@ -9,19 +10,23 @@ import static com.google.common.collect.Lists.transform;
 
 public class Display {
 
-    private final Student student;
-    private String representation;
+    private final List<Student> students;
+    private String representation = "";
 
-    public Display(Student student) {
-        this.student = student;
+    public Display(List<Student> students) {
+        this.students = students;
     }
 
     public Display() {
-        this.student = null;
+        this.students = null;
     }
 
-    public static Display wrap(Student student){
-        return new Display(student);
+    public static Display wrap(Student... student){
+        return new Display(Lists.newArrayList(student));
+    }
+
+    public static Display wrap(List<Student> students){
+        return new Display(students);
     }
 
     public static String getRomaScore(int score1) {
@@ -133,7 +138,10 @@ public class Display {
 
 
     public Display text() {
-        representation = student.getName() + "," + student.getScore();
+        for (Student student : students) {
+            representation += student.getName() + "," + student.getScore() + "\n";
+        }
+        representation = representation.substring(0, representation.length() - 1);
         return this;
     }
 
