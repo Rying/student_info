@@ -11,7 +11,7 @@ import static org.junit.Assert.assertThat;
 
 public class DisplayTest {
     Display display = new Display();
-    private final List<Student> students = new ArrayList<>();
+    private final List<Student> students = new ArrayList<Student>();
 
     @Before
     public void setUp() {

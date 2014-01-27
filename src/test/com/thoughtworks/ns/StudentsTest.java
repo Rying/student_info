@@ -26,7 +26,7 @@ public class StudentsTest {
 
     @Test
     public void should_get_all_students() {
-        List<Student> another_students = new ArrayList<>();
+        List<Student> another_students = new ArrayList<Student>();
         another_students.add(student_array[0]);
         another_students.add(student_array[1]);
         another_students.add(student_array[2]);
@@ -36,7 +36,7 @@ public class StudentsTest {
 
     @Test
     public void should_get_students_score_more_than_60() {
-        List<Student> another_students = new ArrayList<>();
+        List<Student> another_students = new ArrayList<Student>();
         another_students.add(student_array[0]);
         another_students.add(student_array[1]);
 

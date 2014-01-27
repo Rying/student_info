@@ -14,7 +14,7 @@ public class Students {
 
 
     public Students() {
-        students = new ArrayList<>();
+        students = new ArrayList<Student>();
     }
 
     public void addStudent(Student student) {
@@ -26,7 +26,7 @@ public class Students {
     }
 
     public List<Student> getPassedStudents() {
-        return new ArrayList<>(filter(students, getStudentsScoreMoreThan60()));
+        return new ArrayList<Student>(filter(students, getStudentsScoreMoreThan60()));
     }
 
     private Predicate<Student> getStudentsScoreMoreThan60() {
