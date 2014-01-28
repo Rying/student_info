@@ -1,16 +1,16 @@
 package com.thoughtworks.ns;
 
 public enum NumberType {
-    ARABIC(new ArabicScore()), ROMA(new RomaScore());
+    ARABIC(new ArabicScoreRepresentation()), ROMA(new RomaScoreRepresentation());
 
-    private Score scoreFinder;
+    private ScoreRepresentation scoreRepresentationFinder;
 
-    NumberType(Score score) {
-        this.scoreFinder = score;
+    NumberType(ScoreRepresentation scoreRepresentation) {
+        this.scoreRepresentationFinder = scoreRepresentation;
     }
 
-    public Score scoreFinder() {
-        return scoreFinder;
+    public ScoreRepresentation scoreFinder() {
+        return scoreRepresentationFinder;
     }
 
     private static String getRomaScore(int score1) {
@@ -28,14 +28,14 @@ public enum NumberType {
         return RomaScore;
     }
 
-    private static class ArabicScore implements Score {
+    private static class ArabicScoreRepresentation implements ScoreRepresentation {
         @Override
         public String score(int originalScore) {
             return String.valueOf(originalScore);
         }
     }
 
-    private static class RomaScore implements Score {
+    private static class RomaScoreRepresentation implements ScoreRepresentation {
         @Override
         public String score(int originalScore) {
             return getRomaScore(originalScore);

@@ -1,5 +1,5 @@
 package com.thoughtworks.ns;
 
-public interface Score {
+public interface ScoreRepresentation {
     public String score(int originalScore);
 }
