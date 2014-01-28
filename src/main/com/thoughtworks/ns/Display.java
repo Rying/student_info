@@ -7,6 +7,7 @@ import com.google.common.collect.Lists;
 import java.util.List;
 
 import static com.google.common.collect.Lists.transform;
+import static com.thoughtworks.ns.NumberType.ARABIC;
 
 public class Display {
 
@@ -92,9 +93,7 @@ public class Display {
 
 
     public Display text() {
-        joinWith(",", "\n");
-        removeLastCharacter();
-        return this;
+        return text(ARABIC);
     }
 
     public String show() {
@@ -102,21 +101,31 @@ public class Display {
     }
 
     public Display json() {
-        representation += "{";
-        joinWith(":", ",");
-        removeLastCharacter();
-        representation += "}";
-        return this;
+        return json(ARABIC);
     }
 
     private void removeLastCharacter() {
         representation = representation.substring(0, representation.length() - 1);
     }
 
-    private void joinWith(String middle, String last) {
+    private void joinWith(String middle, String last, Score score) {
         for (Student student : students) {
-            representation += student.getName() + middle + student.getScore() + last;
+            representation += student.getName() + middle + score.getScore(student.getScore()) + last;
         }
+    }
+
+    public Display text(NumberType type) {
+        joinWith(",", "\n", type.getScoreFinder());
+        removeLastCharacter();
+        return this;
+    }
+
+    public Display json(NumberType type) {
+        representation += "{";
+        joinWith(":", ",", type.getScoreFinder());
+        removeLastCharacter();
+        representation += "}";
+        return this;
     }
 }
 

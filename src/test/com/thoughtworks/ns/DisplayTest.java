@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.thoughtworks.ns.Display.wrap;
+import static com.thoughtworks.ns.NumberType.ROMA;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
@@ -43,24 +44,23 @@ public class DisplayTest {
 
     @Test
     public void should_output_A100_in_Roma_is_AC() {
-        assertThat(display.displayInRomaScore(new Student("A", 100)), is("A,C"));
-        assertThat(wrap(new Student("A", 100)).text().show(), is("A,C"));
+        assertThat(wrap(new Student("A", 100)).text(ROMA).show(), is("A,C"));
     }
 
     @Test
     public void should_output_different_students_information_in_different_line_in_Roma() {
-        assertThat(display.displayInRomaScore(students), is("A,C\n" +
+        assertThat(wrap(students).text(ROMA).show(), is("A,C\n" +
                 "B,LXXX\n" +
                 "C,LIX"));
     }
 
     @Test
     public void should_output_A100_in_JsonRoma_is_right() {
-        assertThat(display.jsDisplayInRomaScore(new Student("A", 100)), is("{A:C}"));
+        assertThat(wrap(new Student("A", 100)).json(ROMA).show(), is("{A:C}"));
     }
 
     @Test
     public void should_out_all_students_information_in_JsonRoma_is_right() {
-        assertThat(display.jsDisplayInRomaScore(students), is("{A:C,B:LXXX,C:LIX}"));
+        assertThat(wrap(students).json(ROMA).show(), is("{A:C,B:LXXX,C:LIX}"));
     }
 }
