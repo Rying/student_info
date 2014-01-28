@@ -14,18 +14,18 @@ public class Display {
     private String representation = "";
 
     public Display(List<Student> students) {
-        this.students = students;
+        this.students = Lists.newArrayList(students);
     }
 
     public Display() {
         this.students = null;
     }
 
-    public static Display wrap(Student... student){
+    public static Display wrap(Student... student) {
         return new Display(Lists.newArrayList(student));
     }
 
-    public static Display wrap(List<Student> students){
+    public static Display wrap(List<Student> students) {
         return new Display(students);
     }
 

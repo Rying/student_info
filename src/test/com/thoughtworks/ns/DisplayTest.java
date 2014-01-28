@@ -44,6 +44,7 @@ public class DisplayTest {
     @Test
     public void should_output_A100_in_Roma_is_AC() {
         assertThat(display.displayInRomaScore(new Student("A", 100)), is("A,C"));
+        assertThat(wrap(new Student("A", 100)).text().show(), is("A,C"));
     }
 
     @Test
