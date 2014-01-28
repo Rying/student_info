@@ -37,14 +37,14 @@ public class Display {
     }
 
     public Display text(NumberType type) {
-        joinWith(",", "\n", type.getScoreFinder());
+        joinWith(",", "\n", type);
         removeLastCharacter();
         return this;
     }
 
     public Display json(NumberType type) {
         representation += "{";
-        joinWith(":", ",", type.getScoreFinder());
+        joinWith(":", ",", type);
         removeLastCharacter();
         representation += "}";
         return this;
@@ -54,9 +54,9 @@ public class Display {
         representation = representation.substring(0, representation.length() - 1);
     }
 
-    private void joinWith(String middle, String last, Score score) {
+    private void joinWith(String joiner, String tail, NumberType type) {
         for (Student student : students) {
-            representation += student.getName() + middle + score.getScore(student.getScore()) + last;
+            representation += student.getName() + joiner + type.scoreFinder().score(student.getScore()) + tail;
         }
     }
 }
