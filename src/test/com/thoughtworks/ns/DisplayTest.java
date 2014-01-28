@@ -12,7 +12,6 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 public class DisplayTest {
-    Display display = new Display();
     private final List<Student> students = new ArrayList<Student>();
 
     @Before
